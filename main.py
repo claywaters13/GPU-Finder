@@ -3,6 +3,7 @@ import time
 import os
 from bs4 import BeautifulSoup
 from twilio.rest import Client
+import env_vars
 
 # URL for all graphics cards available in this model on BestBuy
 models = {
@@ -27,6 +28,8 @@ client = Client(account_sid, auth_token)
 # Phone Numbers for alerting
 phone_numbers = [os.environ['Main_Phone_Number']]
 
+# Test Configuration
+send_initialization_text = True
 
 # Time Configurations
 stock_check_frequency = 60  # 60 seconds
@@ -94,6 +97,18 @@ class BestBuyInventoryChecker:
         out_of_stock = self._check_item_out_of_stock()
         total_SKUs = in_stock + out_of_stock
         return in_stock, total_SKUs
+
+
+# Send a single text message to confirm that the text integration is working properly
+
+if send_initialization_text:
+    print("\nSending test text message on initialization\n")
+
+    client.api.account.messages.create(
+        body='This message confirms that your script has initialized properly and text notifications are working',
+        from_='+12244343786',
+        to=phone_numbers[0]
+    )
 
 
 while True:
