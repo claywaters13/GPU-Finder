@@ -4,5 +4,5 @@ RUN pip3 install bs4
 RUN pip3 install twilio
 WORKDIR /usr/src/app
 COPY . .
-CMD ["main.py"]
-ENTRYPOINT ["python3"]
+CMD ["python3", "-u", "main.py"]
+
