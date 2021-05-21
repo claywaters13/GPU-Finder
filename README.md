@@ -7,7 +7,7 @@ Setup
 Environment Variables
  - You will need a phone number that can receive texts
  - You will need to create a Twilio acocunt
- - You will want to store these as environment variables
+ - You will want to store these as environment variables and I've stored those as an imported file called env_vars.py that sets those variables
  
 Web URLs
  - You will want to use Best Buy URLs that have only the products you are interested in
