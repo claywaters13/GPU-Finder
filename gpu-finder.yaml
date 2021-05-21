@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-finder-deploy
+  labels:
+    app: gpu-finder-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gpu-finder-app
+  template:
+    metadata:
+      labels:
+        app: gpu-finder-app
+    spec:
+      containers:
+      - name: gpu-finder-cont
+        image: gcr.io/clays-project/gpu-finder
